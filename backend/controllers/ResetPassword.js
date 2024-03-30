@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const mailSender = require("../utils/mailSender");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 //resetPassword token
 exports.resetPasswordToken = async (req, res) => {
     try {
@@ -53,10 +54,10 @@ exports.resetPasswordToken = async (req, res) => {
 exports.resetPassword = async (req, res) => {
     //data fetch
     try {
-            const {password, confirmedPassword, token} = req.body;  //frontend ne dala h
+            const {password, confirmPassword, token} = req.body;  //frontend ne dala h
         
             // validation
-            if(password !== confirmedPassword) {
+            if(password !== confirmPassword) {
                 return res.json({
                     success:false,
                     message:'Password not matching'
