@@ -80,6 +80,7 @@ exports.isInstructor = async (req, res, next) => {
 exports.isAdmin = async (req, res, next) => {
     try {
         // from 
+        
         if(req.user.accountType !=='Admin') {
             return res.status(401).json({
                 success:false,
